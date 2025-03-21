@@ -23,35 +23,33 @@
 
 // [3,6,2,7,5,1,4]
 
-function josephus(items,k){
+function josephus(items, k) {
+  if (items.length === 0) {
+    return [];
+  }
 
-    if (items.length === 0) {
-      return []
-    } 
-    
-    if (k === 1) {
-      return items
-    }
-      
-    let itemsCopy = items;
-    let finishedArr = []
-    let count = 1
-    let i = 0
+  if (k === 1) {
+    return items;
+  }
 
-    while (finishedArr.length != items.length) {
-      if  (count < k) {
-        count++
-        items.push(items[i])
-        items.splice([i], 1)
-      } 
-        else if (count == k && i <= items.length) {
-        finishedArr.push(items[i])
-        count = 1
-        i++ 
-        }
-        else if (i > items.length) {
-          i = 0
-        }
-      }   
-      return finishedArr
+  let itemsCopy = items;
+  let finishedArr = [];
+  let count = 1;
+  let i = 0;
+
+  while (finishedArr.length != items.length) {
+    if (count < k) {
+      count++;
+      items.push(items[i]);
+      items.splice([i], 1);
+    } else if (count == k && i <= items.length) {
+      finishedArr.push(items[i]);
+      count = 1;
+      i++;
+    } else if (i > items.length) {
+      i = 0;
     }
+  }
+  return finishedArr;
+}
+
